@@ -1,0 +1,10 @@
+^C:\USERS\YANND\DESKTOP\C++\HANGMAN\BUILD\CMAKEFILES\BF71C0F809553E4AD532FC74E656B0CD\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/yannd/Desktop/C++/Hangman -BC:/Users/yannd/Desktop/C++/Hangman/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/yannd/Desktop/C++/Hangman/build/hangman.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
