@@ -4,6 +4,7 @@
 #include <string>
 
 #include "utils.hpp"
+#include "File.hpp"
 
 void stringToLower(std::string & s)
 {
@@ -19,6 +20,32 @@ int checkStringBool (std::string s)
     else                                                         return -1; //incorrect form of string
 }
 
+
+int randomNumber(int sup, int inf)
+{
+    return rand() % sup + inf;
+}
+
+int transformDifficultyInLimit(DIFFICULTY difficulty)
+{
+    switch (difficulty)
+    {
+    case EASY:
+        return 20;
+        break;
+    case MEDIUM:
+        return 15;
+        break;
+    case HARD:
+        return 10;
+        break;
+    case EXTREME:
+        return 5;
+        break;
+    default:
+        return 15;
+    }
+}
 
 std::istream& operator>>(std::istream& flow, DIFFICULTY & difficulty)
 {
@@ -54,48 +81,23 @@ std::istream& operator>>(std::istream& flow, LANGUAGE & language)
     return flow;
 }
 
-int randomNumber(int sup, int inf)
-{
-    return rand() % sup + inf;
-}
-
-int transformDifficultyInLimit(DIFFICULTY difficulty)
-{
-    switch (difficulty)
-    {
-    case EASY:
-        return 20;
-        break;
-    case MEDIUM:
-        return 15;
-        break;
-    case HARD:
-        return 10;
-        break;
-    case EXTREME:
-        return 5;
-        break;
-    default:
-        return 15;
-    }
-}
-
-
 //Useful to create files with words with different nb of letters from a big file that contains all words
-// void createAllFilesTXT(LANGUAGE language, std::string const & bigFilePath)
-// {
-//     std::string   word  {""};
-//     std::ifstream bigFile  {bigFilePath};
+void createAllFilesTXT(LANGUAGE language, std::string const & bigFilePath)
+{
+    std::string   word  {""};
+    std::ifstream filePath  {bigFilePath};
 
-//     if (bigFile) 
-//     {    
-//         while(std::getline(bigFile, word)) 
-//         {   
-//             std::string   nameFile = generateFilePath(language, word.size());
-//             std::ofstream file {nameFile, std::ios::app};
-//             file << word << '\n';
-//         }
-//         bigFile.close();
-//     }
-//     else std::cout << "File doesn't exist !" << std::endl;
-// }
+    if (filePath) 
+    {    
+        while(std::getline(filePath, word)) 
+        {   
+            Settings settings(MEDIUM, language, word.size());
+            File fileNew(settings);
+            std::string   nameFile = fileNew.generateFilePath();
+            std::ofstream file {nameFile, std::ios::app};
+            file << word << '\n';
+        }
+        filePath.close();
+    }
+    else std::cout << "File doesn't exist !" << std::endl;
+}

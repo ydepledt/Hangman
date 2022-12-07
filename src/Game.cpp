@@ -67,7 +67,7 @@ void Game::step()
     secureInput(letter, isalpha);
     std::cout << std::endl;
 
-    if (!m_word.letterInWord((char) toupper(letter))) ++m_count;
+    if (!m_word.letterInWord(letter)) ++m_count;
 
     std::cout << std::endl << std::endl;
 }

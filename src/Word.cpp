@@ -14,7 +14,7 @@ bool Word::letterInWord(char letter)
 
     for (int i = 0; i < m_len; ++i)
     {
-        if (letter == m_word[i] && !m_mask[i])
+        if ((char) toupper(letter) == (char) toupper(m_word[i]) && !m_mask[i])
         {
             inWord    = true;
             m_mask[i] = true;

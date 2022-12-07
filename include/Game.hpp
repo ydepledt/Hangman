@@ -29,7 +29,6 @@ class Game {
         File     m_file;
         Word     m_word;
         int      m_limit;
-
 };
 
 #endif

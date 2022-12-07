@@ -5,9 +5,9 @@
 
 #include "File.hpp"
 
-File::File(LANGUAGE language, std::string const & filePath, int nbOfLetters) : m_language(language), 
-                                                                               m_nbOfLetters(nbOfLetters), 
-                                                                               m_filePath(filePath) 
+File::File(std::string const & filePath) : m_language(FRENCH), 
+                                           m_nbOfLetters(2), 
+                                           m_filePath(filePath) 
 {
     assert((m_language == FRENCH || m_language == ENGLISH) && "Language not correct");
 }

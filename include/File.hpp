@@ -11,7 +11,7 @@ class File {
 
     public:
         File() = delete;
-        File(LANGUAGE language, std::string const & filePath, int nbOfLetters = 5);
+        File(std::string const & filePath);
         File(Settings settings);
 
         int         nbOfWordsInFile     ();
